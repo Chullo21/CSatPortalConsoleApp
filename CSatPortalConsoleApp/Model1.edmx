@@ -1,0 +1,658 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CSatDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountsDb">
+          <Key>
+            <PropertyRef Name="AccID" />
+          </Key>
+          <Property Name="AccID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccUCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Section" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Role" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ActionDb">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Action" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PIC" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="ControlNo" Type="nvarchar(max)" />
+          <Property Name="TESID" Type="nvarchar(max)" />
+          <Property Name="TargetDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="HasVer" Type="bit" Nullable="false" />
+          <Property Name="ActionStatus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="Dependency" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ART_8D">
+          <Key>
+            <PropertyRef Name="ARTID" />
+          </Key>
+          <Property Name="ARTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControlNo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateValidated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DateClosed" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ERDb">
+          <Key>
+            <PropertyRef Name="ERID" />
+          </Key>
+          <Property Name="ERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControlNo" Type="nvarchar(max)" />
+          <Property Name="WHSESOH" Type="nvarchar(max)" />
+          <Property Name="WHSEGOOD" Type="nvarchar(max)" />
+          <Property Name="WHSENOGOOD" Type="nvarchar(max)" />
+          <Property Name="WHSEDis" Type="nvarchar(max)" />
+          <Property Name="IQASOH" Type="nvarchar(max)" />
+          <Property Name="IQAGOOD" Type="nvarchar(max)" />
+          <Property Name="IQANOGOOD" Type="nvarchar(max)" />
+          <Property Name="IQADis" Type="nvarchar(max)" />
+          <Property Name="WIPSOH" Type="nvarchar(max)" />
+          <Property Name="WIPGOOD" Type="nvarchar(max)" />
+          <Property Name="WIPNOGOOD" Type="nvarchar(max)" />
+          <Property Name="WIPDis" Type="nvarchar(max)" />
+          <Property Name="FGSOH" Type="nvarchar(max)" />
+          <Property Name="FGGOOD" Type="nvarchar(max)" />
+          <Property Name="FGNOGOOD" Type="nvarchar(max)" />
+          <Property Name="FGDis" Type="nvarchar(max)" />
+          <Property Name="Rep" Type="bit" Nullable="false" />
+          <Property Name="RMAno" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IssueNo" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IssueDb">
+          <Key>
+            <PropertyRef Name="IssueID" />
+          </Key>
+          <Property Name="IssueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IssueCreator" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IssueNo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateFound" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Product" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SerialNo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AffectedPN" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Desc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProbDesc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ClientRep" Type="varbinary(max)" />
+          <Property Name="ValNo" Type="nvarchar(max)" />
+          <Property Name="DateAck" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ValidatedStatus" Type="bit" Nullable="false" />
+          <Property Name="ValidationRepSum" Type="nvarchar(max)" />
+          <Property Name="NRMA" Type="nvarchar(max)" />
+          <Property Name="ValRes" Type="nvarchar(max)" />
+          <Property Name="Report" Type="varbinary(max)" />
+          <Property Name="ControlNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateVdal" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Acknowledged" Type="bit" Nullable="false" />
+          <Property Name="HasTES" Type="bit" Nullable="false" />
+          <Property Name="HasCR" Type="bit" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="NeedRMA" Type="nvarchar(max)" />
+          <Property Name="Validator" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotifDb">
+          <Key>
+            <PropertyRef Name="NotifID" />
+          </Key>
+          <Property Name="NotifID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RMADb">
+          <Key>
+            <PropertyRef Name="RMAID" />
+          </Key>
+          <Property Name="RMAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="RMANo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IssueNo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Product" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AffectedPN" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProblemDesc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="QTY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEDb">
+          <Key>
+            <PropertyRef Name="SMTPID" />
+          </Key>
+          <Property Name="SMTPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Port" Type="int" Nullable="false" />
+          <Property Name="SmtpServer" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TDDb">
+          <Key>
+            <PropertyRef Name="TDID" />
+          </Key>
+          <Property Name="TDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionID" Type="int" Nullable="false" />
+          <Property Name="TD" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ControlNo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TESDb">
+          <Key>
+            <PropertyRef Name="TESID" />
+          </Key>
+          <Property Name="TESID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControlNo" Type="nvarchar(max)" />
+          <Property Name="TCWhy1" Type="nvarchar(max)" />
+          <Property Name="TCWhy2" Type="nvarchar(max)" />
+          <Property Name="TCWhy3" Type="nvarchar(max)" />
+          <Property Name="TCWhy4" Type="nvarchar(max)" />
+          <Property Name="TRC" Type="nvarchar(max)" />
+          <Property Name="ECWhy1" Type="nvarchar(max)" />
+          <Property Name="ECWhy2" Type="nvarchar(max)" />
+          <Property Name="ECWhy3" Type="nvarchar(max)" />
+          <Property Name="ECWhy4" Type="nvarchar(max)" />
+          <Property Name="ERC" Type="nvarchar(max)" />
+          <Property Name="SCWhy1" Type="nvarchar(max)" />
+          <Property Name="SCWhy2" Type="nvarchar(max)" />
+          <Property Name="SCWhy3" Type="nvarchar(max)" />
+          <Property Name="SCWhy4" Type="nvarchar(max)" />
+          <Property Name="SRC" Type="nvarchar(max)" />
+          <Property Name="ECWhy5" Type="nvarchar(max)" />
+          <Property Name="SCWhy5" Type="nvarchar(max)" />
+          <Property Name="TCWhy5" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="VerDb">
+          <Key>
+            <PropertyRef Name="VerID" />
+          </Key>
+          <Property Name="VerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionID" Type="int" Nullable="false" />
+          <Property Name="ControlNo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Files" Type="varbinary(max)" />
+          <Property Name="DateVer" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="StatusDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Result" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="RCType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Verificator" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CSatDbModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsDb" EntityType="Self.AccountsDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActionDb" EntityType="Self.ActionDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ART_8D" EntityType="Self.ART_8D" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ERDb" EntityType="Self.ERDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IssueDb" EntityType="Self.IssueDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotifDb" EntityType="Self.NotifDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RMADb" EntityType="Self.RMADb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEDb" EntityType="Self.SEDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TDDb" EntityType="Self.TDDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TESDb" EntityType="Self.TESDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VerDb" EntityType="Self.VerDb" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CSatDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountsDb">
+          <Key>
+            <PropertyRef Name="AccID" />
+          </Key>
+          <Property Name="AccID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccUCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ActionDb">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PIC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ControlNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TESID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TargetDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="HasVer" Type="Boolean" Nullable="false" />
+          <Property Name="ActionStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dependency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ART_8D">
+          <Key>
+            <PropertyRef Name="ARTID" />
+          </Key>
+          <Property Name="ARTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControlNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateValidated" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DateClosed" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="ERDb">
+          <Key>
+            <PropertyRef Name="ERID" />
+          </Key>
+          <Property Name="ERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControlNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WHSESOH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WHSEGOOD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WHSENOGOOD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WHSEDis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IQASOH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IQAGOOD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IQANOGOOD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IQADis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WIPSOH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WIPGOOD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WIPNOGOOD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WIPDis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FGSOH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FGGOOD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FGNOGOOD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FGDis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rep" Type="Boolean" Nullable="false" />
+          <Property Name="RMAno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IssueNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IssueDb">
+          <Key>
+            <PropertyRef Name="IssueID" />
+          </Key>
+          <Property Name="IssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IssueCreator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IssueNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateFound" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SerialNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AffectedPN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProbDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientRep" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ValNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateAck" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ValidatedStatus" Type="Boolean" Nullable="false" />
+          <Property Name="ValidationRepSum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NRMA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValRes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Report" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ControlNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateVdal" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Acknowledged" Type="Boolean" Nullable="false" />
+          <Property Name="HasTES" Type="Boolean" Nullable="false" />
+          <Property Name="HasCR" Type="Boolean" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="NeedRMA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Validator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotifDb">
+          <Key>
+            <PropertyRef Name="NotifID" />
+          </Key>
+          <Property Name="NotifID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RMADb">
+          <Key>
+            <PropertyRef Name="RMAID" />
+          </Key>
+          <Property Name="RMAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="RMANo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IssueNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AffectedPN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProblemDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QTY" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEDb">
+          <Key>
+            <PropertyRef Name="SMTPID" />
+          </Key>
+          <Property Name="SMTPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Port" Type="Int32" Nullable="false" />
+          <Property Name="SmtpServer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TDDb">
+          <Key>
+            <PropertyRef Name="TDID" />
+          </Key>
+          <Property Name="TDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionID" Type="Int32" Nullable="false" />
+          <Property Name="TD" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ControlNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TESDb">
+          <Key>
+            <PropertyRef Name="TESID" />
+          </Key>
+          <Property Name="TESID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControlNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TCWhy1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TCWhy2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TCWhy3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TCWhy4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TRC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ECWhy1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ECWhy2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ECWhy3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ECWhy4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ERC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SCWhy1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SCWhy2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SCWhy3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SCWhy4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SRC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ECWhy5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SCWhy5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TCWhy5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VerDb">
+          <Key>
+            <PropertyRef Name="VerID" />
+          </Key>
+          <Property Name="VerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionID" Type="Int32" Nullable="false" />
+          <Property Name="ControlNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Files" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateVer" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="StatusDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="RCType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Verificator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CSatDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+          <EntitySet Name="AccountsDbs" EntityType="Self.AccountsDb" />
+          <EntitySet Name="ActionDbs" EntityType="Self.ActionDb" />
+          <EntitySet Name="ART_8D" EntityType="Self.ART_8D" />
+          <EntitySet Name="ERDbs" EntityType="Self.ERDb" />
+          <EntitySet Name="IssueDbs" EntityType="Self.IssueDb" />
+          <EntitySet Name="NotifDbs" EntityType="Self.NotifDb" />
+          <EntitySet Name="RMADbs" EntityType="Self.RMADb" />
+          <EntitySet Name="SEDbs" EntityType="Self.SEDb" />
+          <EntitySet Name="TDDbs" EntityType="Self.TDDb" />
+          <EntitySet Name="TESDbs" EntityType="Self.TESDb" />
+          <EntitySet Name="VerDbs" EntityType="Self.VerDb" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CSatDbModelStoreContainer" CdmEntityContainer="CSatDbEntities">
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="CSatDbModel.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsDbs">
+            <EntityTypeMapping TypeName="CSatDbModel.AccountsDb">
+              <MappingFragment StoreEntitySet="AccountsDb">
+                <ScalarProperty Name="AccID" ColumnName="AccID" />
+                <ScalarProperty Name="AccUCode" ColumnName="AccUCode" />
+                <ScalarProperty Name="AccName" ColumnName="AccName" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionDbs">
+            <EntityTypeMapping TypeName="CSatDbModel.ActionDb">
+              <MappingFragment StoreEntitySet="ActionDb">
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="PIC" ColumnName="PIC" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
+                <ScalarProperty Name="TESID" ColumnName="TESID" />
+                <ScalarProperty Name="TargetDate" ColumnName="TargetDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="HasVer" ColumnName="HasVer" />
+                <ScalarProperty Name="ActionStatus" ColumnName="ActionStatus" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Dependency" ColumnName="Dependency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ART_8D">
+            <EntityTypeMapping TypeName="CSatDbModel.ART_8D">
+              <MappingFragment StoreEntitySet="ART_8D">
+                <ScalarProperty Name="ARTID" ColumnName="ARTID" />
+                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
+                <ScalarProperty Name="DateValidated" ColumnName="DateValidated" />
+                <ScalarProperty Name="DateClosed" ColumnName="DateClosed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ERDbs">
+            <EntityTypeMapping TypeName="CSatDbModel.ERDb">
+              <MappingFragment StoreEntitySet="ERDb">
+                <ScalarProperty Name="ERID" ColumnName="ERID" />
+                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
+                <ScalarProperty Name="WHSESOH" ColumnName="WHSESOH" />
+                <ScalarProperty Name="WHSEGOOD" ColumnName="WHSEGOOD" />
+                <ScalarProperty Name="WHSENOGOOD" ColumnName="WHSENOGOOD" />
+                <ScalarProperty Name="WHSEDis" ColumnName="WHSEDis" />
+                <ScalarProperty Name="IQASOH" ColumnName="IQASOH" />
+                <ScalarProperty Name="IQAGOOD" ColumnName="IQAGOOD" />
+                <ScalarProperty Name="IQANOGOOD" ColumnName="IQANOGOOD" />
+                <ScalarProperty Name="IQADis" ColumnName="IQADis" />
+                <ScalarProperty Name="WIPSOH" ColumnName="WIPSOH" />
+                <ScalarProperty Name="WIPGOOD" ColumnName="WIPGOOD" />
+                <ScalarProperty Name="WIPNOGOOD" ColumnName="WIPNOGOOD" />
+                <ScalarProperty Name="WIPDis" ColumnName="WIPDis" />
+                <ScalarProperty Name="FGSOH" ColumnName="FGSOH" />
+                <ScalarProperty Name="FGGOOD" ColumnName="FGGOOD" />
+                <ScalarProperty Name="FGNOGOOD" ColumnName="FGNOGOOD" />
+                <ScalarProperty Name="FGDis" ColumnName="FGDis" />
+                <ScalarProperty Name="Rep" ColumnName="Rep" />
+                <ScalarProperty Name="RMAno" ColumnName="RMAno" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IssueNo" ColumnName="IssueNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IssueDbs">
+            <EntityTypeMapping TypeName="CSatDbModel.IssueDb">
+              <MappingFragment StoreEntitySet="IssueDb">
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+                <ScalarProperty Name="IssueCreator" ColumnName="IssueCreator" />
+                <ScalarProperty Name="IssueNo" ColumnName="IssueNo" />
+                <ScalarProperty Name="DateFound" ColumnName="DateFound" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="AffectedPN" ColumnName="AffectedPN" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="ProbDesc" ColumnName="ProbDesc" />
+                <ScalarProperty Name="ClientRep" ColumnName="ClientRep" />
+                <ScalarProperty Name="ValNo" ColumnName="ValNo" />
+                <ScalarProperty Name="DateAck" ColumnName="DateAck" />
+                <ScalarProperty Name="ValidatedStatus" ColumnName="ValidatedStatus" />
+                <ScalarProperty Name="ValidationRepSum" ColumnName="ValidationRepSum" />
+                <ScalarProperty Name="NRMA" ColumnName="NRMA" />
+                <ScalarProperty Name="ValRes" ColumnName="ValRes" />
+                <ScalarProperty Name="Report" ColumnName="Report" />
+                <ScalarProperty Name="ControlNumber" ColumnName="ControlNumber" />
+                <ScalarProperty Name="DateVdal" ColumnName="DateVdal" />
+                <ScalarProperty Name="Acknowledged" ColumnName="Acknowledged" />
+                <ScalarProperty Name="HasTES" ColumnName="HasTES" />
+                <ScalarProperty Name="HasCR" ColumnName="HasCR" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="NeedRMA" ColumnName="NeedRMA" />
+                <ScalarProperty Name="Validator" ColumnName="Validator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotifDbs">
+            <EntityTypeMapping TypeName="CSatDbModel.NotifDb">
+              <MappingFragment StoreEntitySet="NotifDb">
+                <ScalarProperty Name="NotifID" ColumnName="NotifID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RMADbs">
+            <EntityTypeMapping TypeName="CSatDbModel.RMADb">
+              <MappingFragment StoreEntitySet="RMADb">
+                <ScalarProperty Name="RMAID" ColumnName="RMAID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="RMANo" ColumnName="RMANo" />
+                <ScalarProperty Name="IssueNo" ColumnName="IssueNo" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="AffectedPN" ColumnName="AffectedPN" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProblemDesc" ColumnName="ProblemDesc" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEDbs">
+            <EntityTypeMapping TypeName="CSatDbModel.SEDb">
+              <MappingFragment StoreEntitySet="SEDb">
+                <ScalarProperty Name="SMTPID" ColumnName="SMTPID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="SmtpServer" ColumnName="SmtpServer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TDDbs">
+            <EntityTypeMapping TypeName="CSatDbModel.TDDb">
+              <MappingFragment StoreEntitySet="TDDb">
+                <ScalarProperty Name="TDID" ColumnName="TDID" />
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+                <ScalarProperty Name="TD" ColumnName="TD" />
+                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TESDbs">
+            <EntityTypeMapping TypeName="CSatDbModel.TESDb">
+              <MappingFragment StoreEntitySet="TESDb">
+                <ScalarProperty Name="TESID" ColumnName="TESID" />
+                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
+                <ScalarProperty Name="TCWhy1" ColumnName="TCWhy1" />
+                <ScalarProperty Name="TCWhy2" ColumnName="TCWhy2" />
+                <ScalarProperty Name="TCWhy3" ColumnName="TCWhy3" />
+                <ScalarProperty Name="TCWhy4" ColumnName="TCWhy4" />
+                <ScalarProperty Name="TRC" ColumnName="TRC" />
+                <ScalarProperty Name="ECWhy1" ColumnName="ECWhy1" />
+                <ScalarProperty Name="ECWhy2" ColumnName="ECWhy2" />
+                <ScalarProperty Name="ECWhy3" ColumnName="ECWhy3" />
+                <ScalarProperty Name="ECWhy4" ColumnName="ECWhy4" />
+                <ScalarProperty Name="ERC" ColumnName="ERC" />
+                <ScalarProperty Name="SCWhy1" ColumnName="SCWhy1" />
+                <ScalarProperty Name="SCWhy2" ColumnName="SCWhy2" />
+                <ScalarProperty Name="SCWhy3" ColumnName="SCWhy3" />
+                <ScalarProperty Name="SCWhy4" ColumnName="SCWhy4" />
+                <ScalarProperty Name="SRC" ColumnName="SRC" />
+                <ScalarProperty Name="ECWhy5" ColumnName="ECWhy5" />
+                <ScalarProperty Name="SCWhy5" ColumnName="SCWhy5" />
+                <ScalarProperty Name="TCWhy5" ColumnName="TCWhy5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VerDbs">
+            <EntityTypeMapping TypeName="CSatDbModel.VerDb">
+              <MappingFragment StoreEntitySet="VerDb">
+                <ScalarProperty Name="VerID" ColumnName="VerID" />
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Files" ColumnName="Files" />
+                <ScalarProperty Name="DateVer" ColumnName="DateVer" />
+                <ScalarProperty Name="StatusDate" ColumnName="StatusDate" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="RCType" ColumnName="RCType" />
+                <ScalarProperty Name="Verificator" ColumnName="Verificator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
