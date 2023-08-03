@@ -4,11 +4,6 @@ using System.Net;
 using System.Threading;
 using System.Linq;
 using System.Collections.Generic;
-using static System.Collections.Specialized.BitVector32;
-using System.ComponentModel;
-using System.Data.Entity.ModelConfiguration.Configuration;
-using System.Net.Configuration;
-using System.Xml;
 
 namespace CSatPortalConsoleApp
 {
@@ -110,7 +105,7 @@ namespace CSatPortalConsoleApp
         static void EnableTimer()
         {
             Timer timer = new Timer(CheckForDueDates, null, TimeSpan.Zero, TimeSpan.FromSeconds(86400));
-
+            
             Console.ReadKey();
             timer.Dispose();
         }
