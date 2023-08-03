@@ -23,5 +23,7 @@ namespace CSatPortalConsoleApp
         public string Description { get; set; }
         public string ProblemDesc { get; set; }
         public int QTY { get; set; }
+        public Nullable<System.DateTime> DateReceived { get; set; }
+        public byte[] FA { get; set; }
     }
 }

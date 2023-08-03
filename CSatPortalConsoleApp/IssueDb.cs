@@ -41,5 +41,9 @@ namespace CSatPortalConsoleApp
         public bool isDeleted { get; set; }
         public string NeedRMA { get; set; }
         public string Validator { get; set; }
+        public byte[] EmailSnip { get; set; }
+        public string FFFS { get; set; }
+        public string Requirement { get; set; }
+        public bool Has8D { get; set; }
     }
 }

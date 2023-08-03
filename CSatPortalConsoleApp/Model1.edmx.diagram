@@ -17,6 +17,8 @@
         <EntityTypeShape EntityType="CSatDbModel.TDDb" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CSatDbModel.TESDb" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CSatDbModel.VerDb" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSatDbModel.C_8DDb" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CSatDbModel.DefDb" Width="1.5" PointX="11.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

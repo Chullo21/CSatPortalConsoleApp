@@ -37,5 +37,7 @@ namespace CSatPortalConsoleApp
         public virtual DbSet<TDDb> TDDbs { get; set; }
         public virtual DbSet<TESDb> TESDbs { get; set; }
         public virtual DbSet<VerDb> VerDbs { get; set; }
+        public virtual DbSet<C_8DDb> C_8DDb { get; set; }
+        public virtual DbSet<DefDb> DefDbs { get; set; }
     }
 }
