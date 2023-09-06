@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSatPortalConsoleApp
+namespace CSatPortalConsoleApp.AppDbContext
 {
     using System;
     using System.Collections.Generic;

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSatPortalConsoleApp
+namespace CSatPortalConsoleApp.AppDbContext
 {
     using System;
     using System.Collections.Generic;
@@ -27,5 +27,9 @@ namespace CSatPortalConsoleApp
         public string ActionStatus { get; set; }
         public string Type { get; set; }
         public string Dependency { get; set; }
+        public bool VerStatus { get; set; }
+        public Nullable<System.DateTime> DateVerified { get; set; }
+        public byte[] VerificationFile { get; set; }
+        public string VerRemarks { get; set; }
     }
 }

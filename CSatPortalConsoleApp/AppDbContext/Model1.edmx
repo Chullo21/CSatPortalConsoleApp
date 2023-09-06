@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CSatDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CSATDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__EFMigrationsHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -33,6 +33,7 @@
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
           <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="ActionDb">
           <Key>
@@ -51,6 +52,18 @@
           <Property Name="ActionStatus" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Type" Type="nvarchar(max)" />
           <Property Name="Dependency" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="VerStatus" Type="bit" Nullable="false" />
+          <Property Name="DateVerified" Type="datetime2" Precision="7" />
+          <Property Name="VerificationFile" Type="varbinary(max)" />
+          <Property Name="VerRemarks" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AnnDb">
+          <Key>
+            <PropertyRef Name="AnnID" />
+          </Key>
+          <Property Name="AnnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnnouncementMessage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="ART_8D">
           <Key>
@@ -132,6 +145,7 @@
           <Property Name="FFFS" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Requirement" Type="nvarchar(max)" />
           <Property Name="Has8D" Type="bit" Nullable="false" />
+          <Property Name="Verified" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="NotifDb">
           <Key>
@@ -219,11 +233,12 @@
           <Property Name="RCType" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Verificator" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="CSatDbModelStoreContainer">
+        <EntityContainer Name="CSATDbModelStoreContainer">
           <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="_8DDb" EntityType="Self._8DDb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountsDb" EntityType="Self.AccountsDb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ActionDb" EntityType="Self.ActionDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnnDb" EntityType="Self.AnnDb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ART_8D" EntityType="Self.ART_8D" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DefDb" EntityType="Self.DefDb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ERDb" EntityType="Self.ERDb" Schema="dbo" store:Type="Tables" />
@@ -238,13 +253,21 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CSatDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CSATDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__EFMigrationsHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
           </Key>
           <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_8DDb">
+          <Key>
+            <PropertyRef Name="C_8DID" />
+          </Key>
+          <Property Name="C_8DID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Report" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ControlNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="AccountsDb">
           <Key>
@@ -259,6 +282,7 @@
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="ActionDb">
           <Key>
@@ -277,6 +301,18 @@
           <Property Name="ActionStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Dependency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VerStatus" Type="Boolean" Nullable="false" />
+          <Property Name="DateVerified" Type="DateTime" Precision="7" />
+          <Property Name="VerificationFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="VerRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AnnDb">
+          <Key>
+            <PropertyRef Name="AnnID" />
+          </Key>
+          <Property Name="AnnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnnouncementMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="ART_8D">
           <Key>
@@ -286,6 +322,14 @@
           <Property Name="ControlNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateValidated" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="DateClosed" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="DefDb">
+          <Key>
+            <PropertyRef Name="DefID" />
+          </Key>
+          <Property Name="DefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Definition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="ERDb">
           <Key>
@@ -347,9 +391,10 @@
           <Property Name="NeedRMA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Validator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmailSnip" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="FFFS" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FFFS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Requirement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Has8D" Type="Boolean" Nullable="false" />
+          <Property Name="Verified" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="NotifDb">
           <Key>
@@ -437,54 +482,48 @@
           <Property Name="RCType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Verificator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="CSatDbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CSATDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
-          <EntitySet Name="AccountsDbs" EntityType="Self.AccountsDb" />
-          <EntitySet Name="ActionDbs" EntityType="Self.ActionDb" />
+          <EntitySet Name="C_8DDb" EntityType="Self.C_8DDb" />
+          <EntitySet Name="AccountsDb" EntityType="Self.AccountsDb" />
+          <EntitySet Name="ActionDb" EntityType="Self.ActionDb" />
+          <EntitySet Name="AnnDb" EntityType="Self.AnnDb" />
           <EntitySet Name="ART_8D" EntityType="Self.ART_8D" />
-          <EntitySet Name="ERDbs" EntityType="Self.ERDb" />
-          <EntitySet Name="IssueDbs" EntityType="Self.IssueDb" />
-          <EntitySet Name="NotifDbs" EntityType="Self.NotifDb" />
-          <EntitySet Name="RMADbs" EntityType="Self.RMADb" />
-          <EntitySet Name="SEDbs" EntityType="Self.SEDb" />
-          <EntitySet Name="TDDbs" EntityType="Self.TDDb" />
-          <EntitySet Name="TESDbs" EntityType="Self.TESDb" />
-          <EntitySet Name="VerDbs" EntityType="Self.VerDb" />
-          <EntitySet Name="C_8DDb" EntityType="CSatDbModel.C_8DDb" />
-          <EntitySet Name="DefDbs" EntityType="CSatDbModel.DefDb" />
+          <EntitySet Name="DefDb" EntityType="Self.DefDb" />
+          <EntitySet Name="ERDb" EntityType="Self.ERDb" />
+          <EntitySet Name="IssueDb" EntityType="Self.IssueDb" />
+          <EntitySet Name="NotifDb" EntityType="Self.NotifDb" />
+          <EntitySet Name="RMADb" EntityType="Self.RMADb" />
+          <EntitySet Name="SEDb" EntityType="Self.SEDb" />
+          <EntitySet Name="TDDb" EntityType="Self.TDDb" />
+          <EntitySet Name="TESDb" EntityType="Self.TESDb" />
+          <EntitySet Name="VerDb" EntityType="Self.VerDb" />
         </EntityContainer>
-        <EntityType Name="C_8DDb">
-          <Key>
-            <PropertyRef Name="C_8DID" />
-          </Key>
-          <Property Name="C_8DID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Report" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ControlNo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="DefDb">
-          <Key>
-            <PropertyRef Name="DefID" />
-          </Key>
-          <Property Name="DefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Subject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Definition" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CSatDbModelStoreContainer" CdmEntityContainer="CSatDbEntities">
+        <EntityContainerMapping StorageEntityContainer="CSATDbModelStoreContainer" CdmEntityContainer="CSATDbEntities">
           <EntitySetMapping Name="C__EFMigrationsHistory">
-            <EntityTypeMapping TypeName="CSatDbModel.C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="CSATDbModel.C__EFMigrationsHistory">
               <MappingFragment StoreEntitySet="__EFMigrationsHistory">
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
                 <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AccountsDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.AccountsDb">
+          <EntitySetMapping Name="C_8DDb">
+            <EntityTypeMapping TypeName="CSATDbModel.C_8DDb">
+              <MappingFragment StoreEntitySet="_8DDb">
+                <ScalarProperty Name="C_8DID" ColumnName="_8DID" />
+                <ScalarProperty Name="Report" ColumnName="Report" />
+                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsDb">
+            <EntityTypeMapping TypeName="CSATDbModel.AccountsDb">
               <MappingFragment StoreEntitySet="AccountsDb">
                 <ScalarProperty Name="AccID" ColumnName="AccID" />
                 <ScalarProperty Name="AccUCode" ColumnName="AccUCode" />
@@ -495,11 +534,12 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ActionDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.ActionDb">
+          <EntitySetMapping Name="ActionDb">
+            <EntityTypeMapping TypeName="CSATDbModel.ActionDb">
               <MappingFragment StoreEntitySet="ActionDb">
                 <ScalarProperty Name="ActionID" ColumnName="ActionID" />
                 <ScalarProperty Name="Action" ColumnName="Action" />
@@ -514,11 +554,24 @@
                 <ScalarProperty Name="ActionStatus" ColumnName="ActionStatus" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Dependency" ColumnName="Dependency" />
+                <ScalarProperty Name="VerStatus" ColumnName="VerStatus" />
+                <ScalarProperty Name="DateVerified" ColumnName="DateVerified" />
+                <ScalarProperty Name="VerificationFile" ColumnName="VerificationFile" />
+                <ScalarProperty Name="VerRemarks" ColumnName="VerRemarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnnDb">
+            <EntityTypeMapping TypeName="CSATDbModel.AnnDb">
+              <MappingFragment StoreEntitySet="AnnDb">
+                <ScalarProperty Name="AnnID" ColumnName="AnnID" />
+                <ScalarProperty Name="AnnouncementMessage" ColumnName="AnnouncementMessage" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ART_8D">
-            <EntityTypeMapping TypeName="CSatDbModel.ART_8D">
+            <EntityTypeMapping TypeName="CSATDbModel.ART_8D">
               <MappingFragment StoreEntitySet="ART_8D">
                 <ScalarProperty Name="ARTID" ColumnName="ARTID" />
                 <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
@@ -527,8 +580,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ERDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.ERDb">
+          <EntitySetMapping Name="DefDb">
+            <EntityTypeMapping TypeName="CSATDbModel.DefDb">
+              <MappingFragment StoreEntitySet="DefDb">
+                <ScalarProperty Name="DefID" ColumnName="DefID" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Definition" ColumnName="Definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ERDb">
+            <EntityTypeMapping TypeName="CSATDbModel.ERDb">
               <MappingFragment StoreEntitySet="ERDb">
                 <ScalarProperty Name="ERID" ColumnName="ERID" />
                 <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
@@ -556,13 +618,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="IssueDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.IssueDb">
+          <EntitySetMapping Name="IssueDb">
+            <EntityTypeMapping TypeName="CSATDbModel.IssueDb">
               <MappingFragment StoreEntitySet="IssueDb">
-                <ScalarProperty Name="Has8D" ColumnName="Has8D" />
-                <ScalarProperty Name="Requirement" ColumnName="Requirement" />
-                <ScalarProperty Name="FFFS" ColumnName="FFFS" />
-                <ScalarProperty Name="EmailSnip" ColumnName="EmailSnip" />
                 <ScalarProperty Name="IssueID" ColumnName="IssueID" />
                 <ScalarProperty Name="IssueCreator" ColumnName="IssueCreator" />
                 <ScalarProperty Name="IssueNo" ColumnName="IssueNo" />
@@ -590,11 +648,16 @@
                 <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
                 <ScalarProperty Name="NeedRMA" ColumnName="NeedRMA" />
                 <ScalarProperty Name="Validator" ColumnName="Validator" />
+                <ScalarProperty Name="EmailSnip" ColumnName="EmailSnip" />
+                <ScalarProperty Name="FFFS" ColumnName="FFFS" />
+                <ScalarProperty Name="Requirement" ColumnName="Requirement" />
+                <ScalarProperty Name="Has8D" ColumnName="Has8D" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NotifDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.NotifDb">
+          <EntitySetMapping Name="NotifDb">
+            <EntityTypeMapping TypeName="CSATDbModel.NotifDb">
               <MappingFragment StoreEntitySet="NotifDb">
                 <ScalarProperty Name="NotifID" ColumnName="NotifID" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
@@ -603,11 +666,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RMADbs">
-            <EntityTypeMapping TypeName="CSatDbModel.RMADb">
+          <EntitySetMapping Name="RMADb">
+            <EntityTypeMapping TypeName="CSATDbModel.RMADb">
               <MappingFragment StoreEntitySet="RMADb">
-                <ScalarProperty Name="FA" ColumnName="FA" />
-                <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
                 <ScalarProperty Name="RMAID" ColumnName="RMAID" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="RMANo" ColumnName="RMANo" />
@@ -617,11 +678,13 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ProblemDesc" ColumnName="ProblemDesc" />
                 <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
+                <ScalarProperty Name="FA" ColumnName="FA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SEDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.SEDb">
+          <EntitySetMapping Name="SEDb">
+            <EntityTypeMapping TypeName="CSATDbModel.SEDb">
               <MappingFragment StoreEntitySet="SEDb">
                 <ScalarProperty Name="SMTPID" ColumnName="SMTPID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -631,8 +694,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TDDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.TDDb">
+          <EntitySetMapping Name="TDDb">
+            <EntityTypeMapping TypeName="CSATDbModel.TDDb">
               <MappingFragment StoreEntitySet="TDDb">
                 <ScalarProperty Name="TDID" ColumnName="TDID" />
                 <ScalarProperty Name="ActionID" ColumnName="ActionID" />
@@ -642,8 +705,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TESDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.TESDb">
+          <EntitySetMapping Name="TESDb">
+            <EntityTypeMapping TypeName="CSATDbModel.TESDb">
               <MappingFragment StoreEntitySet="TESDb">
                 <ScalarProperty Name="TESID" ColumnName="TESID" />
                 <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
@@ -668,8 +731,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VerDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.VerDb">
+          <EntitySetMapping Name="VerDb">
+            <EntityTypeMapping TypeName="CSATDbModel.VerDb">
               <MappingFragment StoreEntitySet="VerDb">
                 <ScalarProperty Name="VerID" ColumnName="VerID" />
                 <ScalarProperty Name="ActionID" ColumnName="ActionID" />
@@ -682,24 +745,6 @@
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="RCType" ColumnName="RCType" />
                 <ScalarProperty Name="Verificator" ColumnName="Verificator" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="C_8DDb">
-            <EntityTypeMapping TypeName="CSatDbModel.C_8DDb">
-              <MappingFragment StoreEntitySet="_8DDb">
-                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
-                <ScalarProperty Name="Report" ColumnName="Report" />
-                <ScalarProperty Name="C_8DID" ColumnName="_8DID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DefDbs">
-            <EntityTypeMapping TypeName="CSatDbModel.DefDb">
-              <MappingFragment StoreEntitySet="DefDb">
-                <ScalarProperty Name="Definition" ColumnName="Definition" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="DefID" ColumnName="DefID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -717,7 +762,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

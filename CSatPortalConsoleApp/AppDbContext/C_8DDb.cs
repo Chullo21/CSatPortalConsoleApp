@@ -7,15 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSatPortalConsoleApp
+namespace CSatPortalConsoleApp.AppDbContext
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class DefDb
+    public partial class C_8DDb
     {
-        public int DefID { get; set; }
-        public string Subject { get; set; }
-        public string Definition { get; set; }
+        public int C_8DID { get; set; }
+        public byte[] Report { get; set; }
+        public string ControlNo { get; set; }
     }
 }

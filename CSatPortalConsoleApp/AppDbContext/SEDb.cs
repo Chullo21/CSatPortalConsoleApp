@@ -7,14 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSatPortalConsoleApp
+namespace CSatPortalConsoleApp.AppDbContext
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class C__EFMigrationsHistory
+    public partial class SEDb
     {
-        public string MigrationId { get; set; }
-        public string ProductVersion { get; set; }
+        public int SMTPID { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public int Port { get; set; }
+        public string SmtpServer { get; set; }
     }
 }

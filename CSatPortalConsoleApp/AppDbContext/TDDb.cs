@@ -7,16 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSatPortalConsoleApp
+namespace CSatPortalConsoleApp.AppDbContext
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class NotifDb
+    public partial class TDDb
     {
-        public int NotifID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public string Message { get; set; }
-        public string Type { get; set; }
+        public int TDID { get; set; }
+        public int ActionID { get; set; }
+        public System.DateTime TD { get; set; }
+        public string ControlNo { get; set; }
+        public string Status { get; set; }
     }
 }

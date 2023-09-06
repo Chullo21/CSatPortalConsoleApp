@@ -7,21 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSatPortalConsoleApp
+namespace CSatPortalConsoleApp.AppDbContext
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class AccountsDb
+    public partial class NotifDb
     {
-        public int AccID { get; set; }
-        public string AccUCode { get; set; }
-        public string AccName { get; set; }
-        public string Section { get; set; }
-        public string Role { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public bool isDeleted { get; set; }
-        public string Email { get; set; }
+        public int NotifID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public string Message { get; set; }
+        public string Type { get; set; }
     }
 }

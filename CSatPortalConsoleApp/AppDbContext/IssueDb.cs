@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSatPortalConsoleApp
+namespace CSatPortalConsoleApp.AppDbContext
 {
     using System;
     using System.Collections.Generic;
@@ -45,5 +45,6 @@ namespace CSatPortalConsoleApp
         public string FFFS { get; set; }
         public string Requirement { get; set; }
         public bool Has8D { get; set; }
+        public bool Verified { get; set; }
     }
 }

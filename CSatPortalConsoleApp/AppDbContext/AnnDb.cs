@@ -7,17 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSatPortalConsoleApp
+namespace CSatPortalConsoleApp.AppDbContext
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TDDb
+    public partial class AnnDb
     {
-        public int TDID { get; set; }
-        public int ActionID { get; set; }
-        public System.DateTime TD { get; set; }
-        public string ControlNo { get; set; }
-        public string Status { get; set; }
+        public int AnnID { get; set; }
+        public string AnnouncementMessage { get; set; }
+        public string Type { get; set; }
     }
 }
